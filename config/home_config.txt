@@ -1,0 +1,7 @@
+#set dq_db_location='/user/spanda2020/data/app_dq' ;
+set dq_schema=app_dq;
+#set src_mdw_schema=l1_amlmkt_mdwe;
+#set hdfs_path=/user/spanda2020/data
+set dq_db_path="/user/spanda2020/data/app_dq"
+set dq_chk_master_path=/user/spanda2020/data/app_dq/dq_check_master/
+set dq_app_config_path=/user/spanda2020/data/app_dq/dq_app_config/

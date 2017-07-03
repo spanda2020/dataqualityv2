@@ -1,0 +1,1 @@
+cust_prod_detl~1~1~cust_rf~cust_prod_detl~load_date=2017-06-15~Y~2017-06-01
