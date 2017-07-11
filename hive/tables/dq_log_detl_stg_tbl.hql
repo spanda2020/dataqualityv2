@@ -1,3 +1,4 @@
+use ${hiveconf:dq_schema};
 CREATE  TABLE dq_log_detl_stg
 (
 dq_run_dt varchar(100),

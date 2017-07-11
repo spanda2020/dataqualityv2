@@ -1,6 +1,6 @@
 #!/bin/sh
 ################################################################################
-# Program      : gen_dq_config_load.sh
+# Program      : gen_dq_config_ld_script.sh
 # Date Created : 10/06/2015
 # Description  :
 # Parameters   :  <ENV NAME>
@@ -67,6 +67,7 @@ export dq_db_nm=`grep dq_schema $cfgfile | awk '{ print $2}' |awk -F "=" '{ prin
 export dq_db_path=`grep dq_db_path $cfgfile | awk '{ print $2}' |awk -F "=" '{ print $2}' | awk -F ";" '{print $1}'`
 export dq_chk_master_path=`grep dq_chk_master_path $cfgfile | awk '{ print $2}' |awk -F "=" '{ print $2}' | awk -F ";" '{print $1}'`
 export dq_app_config_path=`grep dq_app_config_path $cfgfile | awk '{ print $2}' |awk -F "=" '{ print $2}' | awk -F ";" '{print $1}'`
+export dq_grp_config_path=`grep dq_grp_config_path $cfgfile | awk '{ print $2}' |awk -F "=" '{ print $2}' | awk -F ";" '{print $1}'`
 
 echo "dq_database_nm :" $dq_db_nm >> ${LOGFILE}
 #echo "hdfs_path :" $hdfs_path >> ${LOGFILE}
@@ -124,3 +125,37 @@ do
 echo " ********** check_master Insert Completed *************************** ."	
                
 done
+
+echo " ********** group_config Insert started *************************** ."
+
+for grp_config_fl in ${CONFIG_LOC}/dq_group_config*.txt
+do
+                echo $grp_config_fl >> ${LOGFILE}
+                
+                
+				echo "hadoop fs -rm "${dq_grp_config_path}"/*" 
+				      hadoop fs -rm "${dq_grp_config_path}"/*
+				echo "hadoop fs -put $grp_config_fl "${dq_grp_config_path}" " 
+                      hadoop fs -put $grp_config_fl "${dq_grp_config_path}" >> ${LOGFILE}
+	
+	if [ $? -eq 0 ]; then
+			
+			echo "group_config  load completed for " $grp_config_fl  >> ${LOGFILE}
+	else
+		    echo "group_config  load failed for " $grp_config_fl  >> ${LOGFILE}
+				
+			exit 1 
+	fi
+	
+echo " ********** group_config Insert Completed *************************** ."	
+               
+done
+
+	if [ $? -eq 0 ]; then
+			
+			echo " ************************   Data Quality check execution  job $0 is completed in  $env . *********************************">> ${LOGFILE}
+	else
+		    echo "************************    Data Quality check execution  job $0 is Failed    in  $env .************************ ">> ${LOGFILE}
+				exit 1 
+	fi
+			

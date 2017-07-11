@@ -1,3 +1,4 @@
+use ${hiveconf:dq_schema};
 create table dq_chk_master
 (
 dq_check_id int,

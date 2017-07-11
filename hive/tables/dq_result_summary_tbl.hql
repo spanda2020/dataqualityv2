@@ -1,3 +1,4 @@
+use ${hiveconf:dq_schema};
 create table dq_result_summary
 (
 dq_check_id int,

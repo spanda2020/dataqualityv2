@@ -1,3 +1,4 @@
+use ${hiveconf:dq_schema};
 create table dq_result_detl
 (
 dq_run_dt varchar(100),

@@ -1,3 +1,4 @@
+use ${hiveconf:dq_schema};
 create table dq_group_config
 (
 dq_grp_name varchar(50),

@@ -1,0 +1,22 @@
+cd /scripts
+
+sh -x gen_dq_create_db_script.sh home
+sh -x gen_dq_create_tbl_script.sh home
+sh -x gen_dq_config_ld_script.sh home
+
+sh -x gen_dq_ini_com.sh home app_cust INI
+sh -x gen_dq_chk_exec.sh home app_cust cust_prod_detl
+sh -x gen_dq_final_ld.sh home app_cust
+sh -x gen_dq_ini_com.sh home app_cust COM
+
+sh generic_dq_create_db_script.sh home
+sh generic_dq_create_tbl_script.sh home
+sh generic_dq_all_config_tbl_ld_script home
+
+cd /spark
+spark-submit gen_dq_prc_ini_com_spark.py app_dq app_cust INI 
+spark-submit gen_dq_chk_spark.py app_dq app_cust cust_prod_detl
+spark-submit gen_dq_final_tbl_ld_spark.py app_dq app_cust
+spark-submit gen_dq_prc_ini_com_spark.py app_dq app_cust COM
+
+
