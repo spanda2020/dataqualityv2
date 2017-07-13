@@ -49,11 +49,5 @@ if __name__ == "__main__":
     print ("batch_id : " ,batch_id)
     # Inserting into dq_log_detl_tbl_stg  for check started..
     sqlContext.sql(''' insert overwrite table  %s partition(dq_batch_id,src_tbl) select *  from %s where dq_batch_id=%d ''' %(dq_log_detl_tbl,dq_log_detl_tbl_stg,batch_id))
-    sqlContext.sql(''' insert overwrite table  %s partition(dq_batch_id,src_tbl) select *  from %s where dq_batch_id=%d ''' %(dq_reslt_detl_master,dq_reslt_detl_master_stg,batch_id))
-    sqlContext.sql(''' insert overwrite table %s partition (dq_batch_id) \
-select  dq_run_dt,dq_check_id,src_schema,src_tbl,src_col,dq_check_nm,dq_group_id,dq_app_id,rowkeynm,tot_rec,sum(nullchk) as null_chk_cnt, sum(dupchk) as dup_chk_cnt,sum(lenchk) as len_chk_cnt,\
-sum(lovchk) as lov_chk_cnt,sum(datatypchk) as data_type_chk_cnt,sum(formatchk) as format_chk_cnt,sum(refchk) as ref_chk_cnt,sum(customchk) as custom_chk_cnt,\
-from_unixtime(unix_timestamp(), 'yyyyMMddhhmmss') as load_time,dq_batch_id \
-from %s where dq_batch_id=%d group by  dq_run_dt,dq_check_id,src_schema,src_tbl,src_col,dq_check_nm,dq_group_id,dq_app_id,rowkeynm,tot_rec,dq_batch_id ''' %(dq_reslt_summ_master,dq_reslt_detl_master,batch_id))
     
-sc.stop()
+    sc.stop()

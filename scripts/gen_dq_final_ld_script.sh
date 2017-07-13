@@ -1,6 +1,6 @@
 #!/bin/sh
 ################################################################################
-# Program      : gen_dq_ini_com.sh
+# Program      : gen_dq_final_ld.sh
 # Date Created : 10/06/2017
 # Description  :
 # Parameters   :  <ENV NAME>
@@ -24,7 +24,7 @@ typeset Start_Time=$(date)
 ##############################################################
 # TEST NUMBER OF PARAMETERS & ODATE TYPE
 ##############################################################
-if [[ $# -ne 3 ]]; then
+if [[ $# -ne 2 ]]; then
   echo "Invalid number of parameters. Please pass <ENV NAME> <APPLICATION NM> <SOURCE SCHEMA NM> <SOURCE TBL NM>" > /dev/null
  
   exit 1
@@ -38,7 +38,7 @@ fi
 
 env=$1
 app_nm=$2
-status=$3
+
 
 echo "Procesing enviorment is  :" $env > /dev/null
 
@@ -85,41 +85,41 @@ echo "dq_schema :" $dq_schema>> ${LOGFILE}
 case "$env" in
                 sit)
                 echo $env >> ${LOGFILE}
-                echo "spark-submit ${SPARK_SCRIPTS}/gen_dq_prc_ini_com_spark.py  $dq_schema $app_nm $status"
-                      spark-submit ${SPARK_SCRIPTS}/gen_dq_prc_ini_com_spark.py  $dq_schema $app_nm $status
+                echo "spark-submit ${SPARK_SCRIPTS}/gen_dq_final_tbl_ld_spark.py  $dq_schema $app_nm"
+                      spark-submit ${SPARK_SCRIPTS}/gen_dq_final_tbl_ld_spark.py  $dq_schema $app_nm
                 ;;  
                 home)
                 echo $env >> ${LOGFILE}
-				echo "spark-submit ${SPARK_SCRIPTS}/gen_dq_prc_ini_com_spark.py  $dq_schema $app_nm $status"
-					  spark-submit ${SPARK_SCRIPTS}/gen_dq_prc_ini_com_spark.py  $dq_schema $app_nm $status
+				echo "spark-submit ${SPARK_SCRIPTS}/gen_dq_final_tbl_ld_spark.py  $dq_schema $app_nm"
+                      spark-submit ${SPARK_SCRIPTS}/gen_dq_final_tbl_ld_spark.py  $dq_schema $app_nm
                 ;; 				
                 uat)
                 echo $env >> ${LOGFILE}
                 echo $env >> ${LOGFILE}
-                echo "spark-submit ${SPARK_SCRIPTS}/gen_dq_prc_ini_com_spark.py  $dq_schema $app_nm $status"
-					  spark-submit ${SPARK_SCRIPTS}/gen_dq_prc_ini_com_spark.py  $dq_schema $app_nm $status
+                echo "spark-submit ${SPARK_SCRIPTS}/gen_dq_final_tbl_ld_spark.py  $dq_schema $app_nm"
+					  spark-submit ${SPARK_SCRIPTS}/gen_dq_final_tbl_ld_spark.py  $dq_schema $app_nm
                 ;;  
                 prod)
                 echo $env >> ${LOGFILE}
-                echo "spark-submit ${SPARK_SCRIPTS}/gen_dq_prc_ini_com_spark.py  $dq_schema $app_nm $status"
-					  spark-submit ${SPARK_SCRIPTS}/gen_dq_prc_ini_com_spark.py  $dq_schema $app_nm $status
+                echo "spark-submit ${SPARK_SCRIPTS}/gen_dq_final_tbl_ld_spark.py  $dq_schema $app_nm"
+					  spark-submit ${SPARK_SCRIPTS}/gen_dq_final_tbl_ld_spark.py  $dq_schema $app_nm
                 ;;  
                 dev)
                 echo $env >> ${LOGFILE}
-                echo "spark-submit ${SPARK_SCRIPTS}/gen_dq_prc_ini_com_spark.py  $dq_schema $app_nm $status"
-                      spark-submit ${SPARK_SCRIPTS}/gen_dq_prc_ini_com_spark.py  $dq_schema $app_nm $status
+                echo "spark-submit ${SPARK_SCRIPTS}/gen_dq_final_tbl_ld_spark.py  $dq_schema $app_nm"
+					  spark-submit ${SPARK_SCRIPTS}/gen_dq_final_tbl_ld_spark.py  $dq_schema $app_nm
                 ;;  
                 
 
 
 esac
 
-	
 	if [ $? -eq 0 ]; then
 			
-			echo " ************************  Data Quality check execution  job $0 is completed in  $env for  $app_nm $status *********************************">> ${LOGFILE}
+			echo " ************************  Data Quality check execution is completed in  $env for  $app_nm $src_schema_nm $src_tbl_nm *********************************">> ${LOGFILE}
 	else
-		    echo "************************    Data Quality check execution  job $0 is Failed   in     $env   for    $app_nm $status.************************ ">> ${LOGFILE}
+		    echo "************************   Data Base creation is failed in  $env for  $app_nm $src_schema_nm $src_tbl_nm Please look into this.************************ ">> ${LOGFILE}
 				exit 1 
 	fi
+				
  
