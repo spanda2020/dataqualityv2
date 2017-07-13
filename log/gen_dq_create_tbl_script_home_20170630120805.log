@@ -1,0 +1,23 @@
+\n START gen_dq_create_tbl_script.sh:  Fri Jun 30 12:08:05 PDT 2017.\n
+/home/cloudera/projects/dataquality_v1/hive/tables/dq_app_config_tbl.hql
+/home/cloudera/projects/dataquality_v1/config/home_config.txt
+beeline -u jdbc:hive2://localhost:10000/app_dq;user pass --silent -i /home/cloudera/projects/dataquality_v1/config/home_config.txt -f /home/cloudera/projects/dataquality_v1/hive/tables/dq_app_config_tbl.hql
+0: jdbc:hive2://localhost:10000/app_dq> #set dq_db_location='/user/spanda2020/data/app_dq' ;
+0: jdbc:hive2://localhost:10000/app_dq> set dq_schema=app_dq;
+0: jdbc:hive2://localhost:10000/app_dq> #set src_mdw_schema=l1_amlmkt_mdwe;
+0: jdbc:hive2://localhost:10000/app_dq> #set hdfs_path=/user/spanda2020/data
+0: jdbc:hive2://localhost:10000/app_dq> set dq_db_path="/user/spanda2020/data/app_dq"
+0: jdbc:hive2://localhost:10000/app_dq> #set dq_chk_master_path=/user/spanda2020/data/app_dq/dq_check_master/
+0: jdbc:hive2://localhost:10000/app_dq> #set dq_app_config_path=/user/spanda2020/data/app_dq/dq_app_config/
+0: jdbc:hive2://localhost:10000/app_dq> 
+0: jdbc:hive2://localhost:10000/app_dq> 0: jdbc:hive2://localhost:10000/app_dq> 
+0: jdbc:hive2://localhost:10000/app_dq> use ${hiveconf:dq_schema};
+0: jdbc:hive2://localhost:10000/app_dq> create table DQ_APP_CONFIG
+0: jdbc:hive2://localhost:10000/app_dq> (
+0: jdbc:hive2://localhost:10000/app_dq> dq_app_name varchar(50),
+0: jdbc:hive2://localhost:10000/app_dq> dq_app_id int,
+0: jdbc:hive2://localhost:10000/app_dq> active_flag varchar(1),
+0: jdbc:hive2://localhost:10000/app_dq> last_updt_dt varchar(50))
+0: jdbc:hive2://localhost:10000/app_dq> row format delimited fields terminated by '~' ;
+
+Table creation is Failed for  /home/cloudera/projects/dataquality_v1/hive/tables/dq_app_config_tbl.hql

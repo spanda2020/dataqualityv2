@@ -1,0 +1,10 @@
+\n START gen_dq_config_tbl_load_script.sh:  Fri Jun 30 16:01:23 PDT 2017.\n
+cfgfile : /home/cloudera/projects/dataquality_v1/config/home_config.txt
+dq_database_nm : app_dq
+dq_chk_master_path : /user/spanda2020/data/app_dq/dq_check_master/
+dq_app_config_path : /user/spanda2020/data/app_dq/dq_app_config/
+/home/cloudera/projects/dataquality_v1/config/dq_app_config.txt
+app_config  load completed for  /home/cloudera/projects/dataquality_v1/config/dq_app_config.txt
+/home/cloudera/projects/dataquality_v1/config/dq_check_master*.txt
+hadoop fs -put /home/cloudera/projects/dataquality_v1/config/dq_check_master*.txt /user/spanda2020/data/app_dq/dq_check_master/ 
+check_master  load failed for  /home/cloudera/projects/dataquality_v1/config/dq_check_master*.txt

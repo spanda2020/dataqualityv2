@@ -1,0 +1,16 @@
+dq_check_id~dq_check_nm~dq_group_id~dq_app_id~src_schema~src_tbl~src_col~rowkey~filter~dq_thrshold_per~null_chk~dup_chk        ~len_chk        ~lov_chk        ~data_type_chk  ~format_chk     ~ref_chk_schema ~ref_chk_tbl~ref_chk_col    ~ref_chk_filter ~custom_chk~error_rec_limit~active_flag~last_updt_dt
+1~cust_rf-cust_prod_detl-sales_id~1~1~cust_rf~cust_prod_detl~sales_id     ~sales_id ,load_date  ~~5~Y~~~~~'[^0-9]'~~~~~~~Y~
+2~cust_rf-cust_prod_detl-prod_price~1~1~cust_rf~cust_prod_detl~prod_price   ~sales_id ,load_date  ~~5~Y~~~~~~~~~~~~Y~
+3~cust_rf-cust_prod_detl-prod_feat_1~1~1~cust_rf~cust_prod_detl~prod_feat_1  ~sales_id ,load_date  ~~5~Y~~~~~~~~~~~~Y~
+4~cust_rf-cust_prod_detl-prod_feat_2~1~1~cust_rf~cust_prod_detl~prod_feat_2  ~sales_id ,load_date  ~~5~Y~~~~~~~~~~~~Y~
+5~cust_rf-cust_prod_detl-cust_age~1~1~cust_rf~cust_prod_detl~cust_age     ~sales_id ,load_date  ~~5~Y~~~~~~~~~~~~Y~
+6~cust_rf-cust_prod_detl-prod_feat_3~1~1~cust_rf~cust_prod_detl~prod_feat_3  ~sales_id ,load_date  ~~5~Y~~~~~~~~~~~~Y~
+7~cust_rf-cust_prod_detl-cust_region~1~1~cust_rf~cust_prod_detl~cust_region  ~sales_id ,load_date  ~~5~Y~~~~~~~~~~~~Y~
+8~cust_rf-cust_prod_detl-country_cd~1~1~cust_rf~cust_prod_detl~country_cd   ~sales_id ,load_date  ~~5~Y~sales_id ,load_date  ~(2,3)~('USA','IND')~~'[^0-9]'~cust_rf~country_state_dtl~country_cd~~~~Y~
+9~cust_rf-cust_prod_detl-state_cd~1~1~cust_rf~cust_prod_detl~state_cd     ~sales_id ,load_date  ~~5~Y~~(2,2)~~~~cust_rf~country_state_dtl~state_cd~~~~Y~
+10~cust_rf-cust_prod_detl-prod_type~1~1~cust_rf~cust_prod_detl~prod_type    ~sales_id ,load_date  ~~5~Y~~~~~~~~~~~~Y~
+11~cust_rf-cust_prod_detl-cust_sex~1~1~cust_rf~cust_prod_detl~cust_sex     ~sales_id ,load_date  ~~5~Y~~(1,1)~('M','F')~~~~~~~~~Y~
+12~cust_rf-cust_prod_detl-cust_title~1~1~cust_rf~cust_prod_detl~cust_title   ~sales_id ,load_date  ~~5~Y~~~~~~~~~~~~Y~
+13~cust_rf-cust_prod_detl-feedback~1~1~cust_rf~cust_prod_detl~feedback     ~sales_id ,load_date  ~~5~Y~~~~~~~~~~~~Y~
+14~cust_rf-cust_prod_detl-load_tm~1~1~cust_rf~cust_prod_detl~load_tm      ~sales_id ,load_date  ~~5~Y~~~~~~~~~~~~Y~
+15~cust_rf-cust_prod_detl-load_date~1~1~cust_rf~cust_prod_detl~load_date    ~sales_id ,load_date  ~~5~N~~~~~~~~~~~~Y~

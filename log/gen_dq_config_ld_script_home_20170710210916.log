@@ -1,0 +1,13 @@
+\n START gen_dq_config_ld_script.sh:  Mon Jul 10 21:09:17 PDT 2017.\n
+cfgfile : /home/cloudera/projects/dataquality_v1/config/home_config.txt
+dq_database_nm : app_dq
+dq_chk_master_path : /user/spanda2020/data/app_dq/dq_chk_master/
+dq_app_config_path : /user/spanda2020/data/app_dq/dq_app_config/
+/home/cloudera/projects/dataquality_v1/config/dq_app_config_20170702.txt
+app_config  load completed for  /home/cloudera/projects/dataquality_v1/config/dq_app_config_20170702.txt
+/home/cloudera/projects/dataquality_v1/config/dq_check_master_20170702.txt
+hadoop fs -put /home/cloudera/projects/dataquality_v1/config/dq_check_master_20170702.txt /user/spanda2020/data/app_dq/dq_chk_master/ 
+check_master  load completed for  /home/cloudera/projects/dataquality_v1/config/dq_check_master_20170702.txt
+/home/cloudera/projects/dataquality_v1/config/dq_group_config_20170702.txt
+group_config  load completed for  /home/cloudera/projects/dataquality_v1/config/dq_group_config_20170702.txt
+ ************************   Data Quality check execution  job gen_dq_config_ld_script.sh is completed in  home . *********************************

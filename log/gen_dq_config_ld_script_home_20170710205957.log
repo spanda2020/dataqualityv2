@@ -1,0 +1,7 @@
+\n START gen_dq_config_ld_script.sh:  Mon Jul 10 20:59:57 PDT 2017.\n
+cfgfile : /home/cloudera/projects/dataquality_v1/config/home_config.txt
+dq_database_nm : app_dq
+dq_chk_master_path : /user/spanda2020/data/app_dq/dq_chk_master/
+dq_app_config_path : /user/spanda2020/data/app_dq/dq_app_config/
+/home/cloudera/projects/dataquality_v1/config/dq_app_config_20170702.txt
+app_config  load failed for  /home/cloudera/projects/dataquality_v1/config/dq_app_config_20170702.txt

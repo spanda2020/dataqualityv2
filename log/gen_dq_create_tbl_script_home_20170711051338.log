@@ -1,0 +1,307 @@
+\n START gen_dq_create_tbl_script.sh:  Tue Jul 11 05:13:38 PDT 2017.\n
+/home/cloudera/projects/dataquality_v1/hive/tables/dq_app_config_tbl.hql
+/home/cloudera/projects/dataquality_v1/config/home_config.txt
+beeline -u "jdbc:hive2://localhost:10000/default;" --silent -i /home/cloudera/projects/dataquality_v1/config/home_config.txt -f /home/cloudera/projects/dataquality_v1/hive/tables/dq_app_config_tbl.hql
+0: jdbc:hive2://localhost:10000/default> #set dq_db_location='/user/spanda2020/data/app_dq' ;
+0: jdbc:hive2://localhost:10000/default> set dq_schema=app_dq;
+0: jdbc:hive2://localhost:10000/default> #set src_mdw_schema=l1_amlmkt_mdwe;
+0: jdbc:hive2://localhost:10000/default> #set hdfs_path=/user/spanda2020/data
+0: jdbc:hive2://localhost:10000/default> set dq_db_path="/user/spanda2020/data/app_dq"
+0: jdbc:hive2://localhost:10000/default> set dq_chk_master_path=/user/spanda2020/data/app_dq/dq_chk_master/
+0: jdbc:hive2://localhost:10000/default> set dq_app_config_path=/user/spanda2020/data/app_dq/dq_app_config/
+0: jdbc:hive2://localhost:10000/default> set dq_grp_config_path=/user/spanda2020/data/app_dq/dq_group_config
+0: jdbc:hive2://localhost:10000/default> set hiveserver2="jdbc:hive2://localhost:10000/default;"
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> use ${hiveconf:dq_schema};
+0: jdbc:hive2://localhost:10000/default> create table DQ_APP_CONFIG
+0: jdbc:hive2://localhost:10000/default> (
+0: jdbc:hive2://localhost:10000/default> dq_app_name varchar(50),
+0: jdbc:hive2://localhost:10000/default> dq_app_id int,
+0: jdbc:hive2://localhost:10000/default> active_flag varchar(1),
+0: jdbc:hive2://localhost:10000/default> last_updt_dt varchar(50))
+0: jdbc:hive2://localhost:10000/default> row format delimited fields terminated by '~' ;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+Table creation is Completed for  /home/cloudera/projects/dataquality_v1/hive/tables/dq_app_config_tbl.hql
+/home/cloudera/projects/dataquality_v1/hive/tables/dq_chk_master_tbl.hql
+/home/cloudera/projects/dataquality_v1/config/home_config.txt
+beeline -u "jdbc:hive2://localhost:10000/default;" --silent -i /home/cloudera/projects/dataquality_v1/config/home_config.txt -f /home/cloudera/projects/dataquality_v1/hive/tables/dq_chk_master_tbl.hql
+0: jdbc:hive2://localhost:10000/default> #set dq_db_location='/user/spanda2020/data/app_dq' ;
+0: jdbc:hive2://localhost:10000/default> set dq_schema=app_dq;
+0: jdbc:hive2://localhost:10000/default> #set src_mdw_schema=l1_amlmkt_mdwe;
+0: jdbc:hive2://localhost:10000/default> #set hdfs_path=/user/spanda2020/data
+0: jdbc:hive2://localhost:10000/default> set dq_db_path="/user/spanda2020/data/app_dq"
+0: jdbc:hive2://localhost:10000/default> set dq_chk_master_path=/user/spanda2020/data/app_dq/dq_chk_master/
+0: jdbc:hive2://localhost:10000/default> set dq_app_config_path=/user/spanda2020/data/app_dq/dq_app_config/
+0: jdbc:hive2://localhost:10000/default> set dq_grp_config_path=/user/spanda2020/data/app_dq/dq_group_config
+0: jdbc:hive2://localhost:10000/default> set hiveserver2="jdbc:hive2://localhost:10000/default;"
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> use ${hiveconf:dq_schema};
+0: jdbc:hive2://localhost:10000/default> create table dq_chk_master
+0: jdbc:hive2://localhost:10000/default> (
+0: jdbc:hive2://localhost:10000/default> dq_check_id int,
+0: jdbc:hive2://localhost:10000/default> dq_check_nm varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_group_id int,
+0: jdbc:hive2://localhost:10000/default> dq_app_id  varchar(100),
+0: jdbc:hive2://localhost:10000/default> src_schema  varchar(100),
+0: jdbc:hive2://localhost:10000/default> src_tbl  varchar(100),
+0: jdbc:hive2://localhost:10000/default> src_col  varchar(100),
+0: jdbc:hive2://localhost:10000/default> rowkey varchar(100),
+0: jdbc:hive2://localhost:10000/default> filter varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_thrshold_per float,
+0: jdbc:hive2://localhost:10000/default> null_chk varchar(1),
+0: jdbc:hive2://localhost:10000/default> dup_chk varchar(100),
+0: jdbc:hive2://localhost:10000/default> len_chk varchar(100),
+0: jdbc:hive2://localhost:10000/default> lov_chk varchar(100),
+0: jdbc:hive2://localhost:10000/default> data_type_chk varchar(100),
+0: jdbc:hive2://localhost:10000/default> format_chk varchar(100),
+0: jdbc:hive2://localhost:10000/default> ref_chk_schema varchar(100),
+0: jdbc:hive2://localhost:10000/default> ref_chk_tbl varchar(100),
+0: jdbc:hive2://localhost:10000/default> ref_chk_col varchar(100),
+0: jdbc:hive2://localhost:10000/default> ref_chk_filter string,
+0: jdbc:hive2://localhost:10000/default> custom_chk string,
+0: jdbc:hive2://localhost:10000/default> error_rec_limit int,
+0: jdbc:hive2://localhost:10000/default> active_flag varchar(1),
+0: jdbc:hive2://localhost:10000/default> last_updt_dt varchar(50))
+0: jdbc:hive2://localhost:10000/default> row format delimited fields terminated by '~' ;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+Table creation is Completed for  /home/cloudera/projects/dataquality_v1/hive/tables/dq_chk_master_tbl.hql
+/home/cloudera/projects/dataquality_v1/hive/tables/dq_group_config_tbl.hql
+/home/cloudera/projects/dataquality_v1/config/home_config.txt
+beeline -u "jdbc:hive2://localhost:10000/default;" --silent -i /home/cloudera/projects/dataquality_v1/config/home_config.txt -f /home/cloudera/projects/dataquality_v1/hive/tables/dq_group_config_tbl.hql
+0: jdbc:hive2://localhost:10000/default> #set dq_db_location='/user/spanda2020/data/app_dq' ;
+0: jdbc:hive2://localhost:10000/default> set dq_schema=app_dq;
+0: jdbc:hive2://localhost:10000/default> #set src_mdw_schema=l1_amlmkt_mdwe;
+0: jdbc:hive2://localhost:10000/default> #set hdfs_path=/user/spanda2020/data
+0: jdbc:hive2://localhost:10000/default> set dq_db_path="/user/spanda2020/data/app_dq"
+0: jdbc:hive2://localhost:10000/default> set dq_chk_master_path=/user/spanda2020/data/app_dq/dq_chk_master/
+0: jdbc:hive2://localhost:10000/default> set dq_app_config_path=/user/spanda2020/data/app_dq/dq_app_config/
+0: jdbc:hive2://localhost:10000/default> set dq_grp_config_path=/user/spanda2020/data/app_dq/dq_group_config
+0: jdbc:hive2://localhost:10000/default> set hiveserver2="jdbc:hive2://localhost:10000/default;"
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> use ${hiveconf:dq_schema};
+0: jdbc:hive2://localhost:10000/default> create table dq_group_config
+0: jdbc:hive2://localhost:10000/default> (
+0: jdbc:hive2://localhost:10000/default> dq_grp_name varchar(50),
+0: jdbc:hive2://localhost:10000/default> dq_grp_id int,
+0: jdbc:hive2://localhost:10000/default> dq_app_id int,
+0: jdbc:hive2://localhost:10000/default> schema_name varchar(50),
+0: jdbc:hive2://localhost:10000/default> table_nm varchar(50),
+0: jdbc:hive2://localhost:10000/default> filter varchar(200),
+0: jdbc:hive2://localhost:10000/default> active_flag varchar(1),
+0: jdbc:hive2://localhost:10000/default> last_updt_dt varchar(50))
+0: jdbc:hive2://localhost:10000/default> row format delimited fields terminated by '~' ;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+Table creation is Completed for  /home/cloudera/projects/dataquality_v1/hive/tables/dq_group_config_tbl.hql
+/home/cloudera/projects/dataquality_v1/hive/tables/dq_log_detl_stg_tbl.hql
+/home/cloudera/projects/dataquality_v1/config/home_config.txt
+beeline -u "jdbc:hive2://localhost:10000/default;" --silent -i /home/cloudera/projects/dataquality_v1/config/home_config.txt -f /home/cloudera/projects/dataquality_v1/hive/tables/dq_log_detl_stg_tbl.hql
+0: jdbc:hive2://localhost:10000/default> #set dq_db_location='/user/spanda2020/data/app_dq' ;
+0: jdbc:hive2://localhost:10000/default> set dq_schema=app_dq;
+0: jdbc:hive2://localhost:10000/default> #set src_mdw_schema=l1_amlmkt_mdwe;
+0: jdbc:hive2://localhost:10000/default> #set hdfs_path=/user/spanda2020/data
+0: jdbc:hive2://localhost:10000/default> set dq_db_path="/user/spanda2020/data/app_dq"
+0: jdbc:hive2://localhost:10000/default> set dq_chk_master_path=/user/spanda2020/data/app_dq/dq_chk_master/
+0: jdbc:hive2://localhost:10000/default> set dq_app_config_path=/user/spanda2020/data/app_dq/dq_app_config/
+0: jdbc:hive2://localhost:10000/default> set dq_grp_config_path=/user/spanda2020/data/app_dq/dq_group_config
+0: jdbc:hive2://localhost:10000/default> set hiveserver2="jdbc:hive2://localhost:10000/default;"
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> use ${hiveconf:dq_schema};
+0: jdbc:hive2://localhost:10000/default> CREATE  TABLE dq_log_detl_stg
+0: jdbc:hive2://localhost:10000/default> (
+0: jdbc:hive2://localhost:10000/default> dq_run_dt varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_check_id int,
+0: jdbc:hive2://localhost:10000/default> src_schema  varchar(100),
+0: jdbc:hive2://localhost:10000/default> src_col  varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_check_nm varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_group_id int,
+0: jdbc:hive2://localhost:10000/default> dq_app_id  varchar(100),
+0: jdbc:hive2://localhost:10000/default> rowkeynm varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_threshold_per float,
+0: jdbc:hive2://localhost:10000/default> tot_rec int,
+0: jdbc:hive2://localhost:10000/default> dq_run_status string,
+0: jdbc:hive2://localhost:10000/default> dq_detl_hql string,
+0: jdbc:hive2://localhost:10000/default> dq_run_time string)
+0: jdbc:hive2://localhost:10000/default> PARTITIONED BY (
+0: jdbc:hive2://localhost:10000/default> src_tbl varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_batch_id int)
+0: jdbc:hive2://localhost:10000/default> stored as parquetfile ;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+Table creation is Completed for  /home/cloudera/projects/dataquality_v1/hive/tables/dq_log_detl_stg_tbl.hql
+/home/cloudera/projects/dataquality_v1/hive/tables/dq_log_detl_tbl.hql
+/home/cloudera/projects/dataquality_v1/config/home_config.txt
+beeline -u "jdbc:hive2://localhost:10000/default;" --silent -i /home/cloudera/projects/dataquality_v1/config/home_config.txt -f /home/cloudera/projects/dataquality_v1/hive/tables/dq_log_detl_tbl.hql
+0: jdbc:hive2://localhost:10000/default> #set dq_db_location='/user/spanda2020/data/app_dq' ;
+0: jdbc:hive2://localhost:10000/default> set dq_schema=app_dq;
+0: jdbc:hive2://localhost:10000/default> #set src_mdw_schema=l1_amlmkt_mdwe;
+0: jdbc:hive2://localhost:10000/default> #set hdfs_path=/user/spanda2020/data
+0: jdbc:hive2://localhost:10000/default> set dq_db_path="/user/spanda2020/data/app_dq"
+0: jdbc:hive2://localhost:10000/default> set dq_chk_master_path=/user/spanda2020/data/app_dq/dq_chk_master/
+0: jdbc:hive2://localhost:10000/default> set dq_app_config_path=/user/spanda2020/data/app_dq/dq_app_config/
+0: jdbc:hive2://localhost:10000/default> set dq_grp_config_path=/user/spanda2020/data/app_dq/dq_group_config
+0: jdbc:hive2://localhost:10000/default> set hiveserver2="jdbc:hive2://localhost:10000/default;"
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> use ${hiveconf:dq_schema};
+0: jdbc:hive2://localhost:10000/default> CREATE  TABLE dq_log_detl
+0: jdbc:hive2://localhost:10000/default> (
+0: jdbc:hive2://localhost:10000/default> dq_run_dt varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_check_id int,
+0: jdbc:hive2://localhost:10000/default> src_schema  varchar(100),
+0: jdbc:hive2://localhost:10000/default> src_col  varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_check_nm varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_group_id int,
+0: jdbc:hive2://localhost:10000/default> dq_app_id  varchar(100),
+0: jdbc:hive2://localhost:10000/default> rowkeynm varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_threshold_per float,
+0: jdbc:hive2://localhost:10000/default> tot_rec int,
+0: jdbc:hive2://localhost:10000/default> dq_run_status string,
+0: jdbc:hive2://localhost:10000/default> dq_detl_hql string,
+0: jdbc:hive2://localhost:10000/default> dq_run_time string)
+0: jdbc:hive2://localhost:10000/default> PARTITIONED BY (
+0: jdbc:hive2://localhost:10000/default> src_tbl varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_batch_id int)
+0: jdbc:hive2://localhost:10000/default> stored as parquetfile ;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+Table creation is Completed for  /home/cloudera/projects/dataquality_v1/hive/tables/dq_log_detl_tbl.hql
+/home/cloudera/projects/dataquality_v1/hive/tables/dq_result_detl_stg_tbl.hql
+/home/cloudera/projects/dataquality_v1/config/home_config.txt
+beeline -u "jdbc:hive2://localhost:10000/default;" --silent -i /home/cloudera/projects/dataquality_v1/config/home_config.txt -f /home/cloudera/projects/dataquality_v1/hive/tables/dq_result_detl_stg_tbl.hql
+0: jdbc:hive2://localhost:10000/default> #set dq_db_location='/user/spanda2020/data/app_dq' ;
+0: jdbc:hive2://localhost:10000/default> set dq_schema=app_dq;
+0: jdbc:hive2://localhost:10000/default> #set src_mdw_schema=l1_amlmkt_mdwe;
+0: jdbc:hive2://localhost:10000/default> #set hdfs_path=/user/spanda2020/data
+0: jdbc:hive2://localhost:10000/default> set dq_db_path="/user/spanda2020/data/app_dq"
+0: jdbc:hive2://localhost:10000/default> set dq_chk_master_path=/user/spanda2020/data/app_dq/dq_chk_master/
+0: jdbc:hive2://localhost:10000/default> set dq_app_config_path=/user/spanda2020/data/app_dq/dq_app_config/
+0: jdbc:hive2://localhost:10000/default> set dq_grp_config_path=/user/spanda2020/data/app_dq/dq_group_config
+0: jdbc:hive2://localhost:10000/default> set hiveserver2="jdbc:hive2://localhost:10000/default;"
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> use ${hiveconf:dq_schema};
+0: jdbc:hive2://localhost:10000/default> create table dq_result_detl_stg
+0: jdbc:hive2://localhost:10000/default> (
+0: jdbc:hive2://localhost:10000/default> dq_run_dt varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_check_id int,
+0: jdbc:hive2://localhost:10000/default> src_schema  varchar(100),
+0: jdbc:hive2://localhost:10000/default> src_col  varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_check_nm varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_group_id int,
+0: jdbc:hive2://localhost:10000/default> dq_app_id  varchar(100),
+0: jdbc:hive2://localhost:10000/default> rowkeynm varchar(100),
+0: jdbc:hive2://localhost:10000/default> rowkeyval varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_threshold_per float,
+0: jdbc:hive2://localhost:10000/default> tot_rec int,
+0: jdbc:hive2://localhost:10000/default> nullChk varchar(1),
+0: jdbc:hive2://localhost:10000/default> dupChk varchar(100),
+0: jdbc:hive2://localhost:10000/default> lenChk varchar(100),
+0: jdbc:hive2://localhost:10000/default> lovChk varchar(100),
+0: jdbc:hive2://localhost:10000/default> dataTypChk varchar(100),
+0: jdbc:hive2://localhost:10000/default> formatChk varchar(100),
+0: jdbc:hive2://localhost:10000/default> refChk varchar(100),
+0: jdbc:hive2://localhost:10000/default> customChk string,
+0: jdbc:hive2://localhost:10000/default> dq_run_time varchar(100))
+0: jdbc:hive2://localhost:10000/default> PARTITIONED BY (
+0: jdbc:hive2://localhost:10000/default> dq_batch_id bigint,
+0: jdbc:hive2://localhost:10000/default> src_tbl varchar(100))
+0: jdbc:hive2://localhost:10000/default> stored as parquetfile ;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+Table creation is Completed for  /home/cloudera/projects/dataquality_v1/hive/tables/dq_result_detl_stg_tbl.hql
+/home/cloudera/projects/dataquality_v1/hive/tables/dq_result_detl_tbl.hql
+/home/cloudera/projects/dataquality_v1/config/home_config.txt
+beeline -u "jdbc:hive2://localhost:10000/default;" --silent -i /home/cloudera/projects/dataquality_v1/config/home_config.txt -f /home/cloudera/projects/dataquality_v1/hive/tables/dq_result_detl_tbl.hql
+0: jdbc:hive2://localhost:10000/default> #set dq_db_location='/user/spanda2020/data/app_dq' ;
+0: jdbc:hive2://localhost:10000/default> set dq_schema=app_dq;
+0: jdbc:hive2://localhost:10000/default> #set src_mdw_schema=l1_amlmkt_mdwe;
+0: jdbc:hive2://localhost:10000/default> #set hdfs_path=/user/spanda2020/data
+0: jdbc:hive2://localhost:10000/default> set dq_db_path="/user/spanda2020/data/app_dq"
+0: jdbc:hive2://localhost:10000/default> set dq_chk_master_path=/user/spanda2020/data/app_dq/dq_chk_master/
+0: jdbc:hive2://localhost:10000/default> set dq_app_config_path=/user/spanda2020/data/app_dq/dq_app_config/
+0: jdbc:hive2://localhost:10000/default> set dq_grp_config_path=/user/spanda2020/data/app_dq/dq_group_config
+0: jdbc:hive2://localhost:10000/default> set hiveserver2="jdbc:hive2://localhost:10000/default;"
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> use ${hiveconf:dq_schema};
+0: jdbc:hive2://localhost:10000/default> create table dq_result_detl
+0: jdbc:hive2://localhost:10000/default> (
+0: jdbc:hive2://localhost:10000/default> dq_run_dt varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_check_id int,
+0: jdbc:hive2://localhost:10000/default> src_schema  varchar(100),
+0: jdbc:hive2://localhost:10000/default> src_col  varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_check_nm varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_group_id int,
+0: jdbc:hive2://localhost:10000/default> dq_app_id  varchar(100),
+0: jdbc:hive2://localhost:10000/default> rowkeynm varchar(100),
+0: jdbc:hive2://localhost:10000/default> rowkeyval varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_threshold_per float,
+0: jdbc:hive2://localhost:10000/default> tot_rec int,
+0: jdbc:hive2://localhost:10000/default> nullChk varchar(1),
+0: jdbc:hive2://localhost:10000/default> dupChk varchar(100),
+0: jdbc:hive2://localhost:10000/default> lenChk varchar(100),
+0: jdbc:hive2://localhost:10000/default> lovChk varchar(100),
+0: jdbc:hive2://localhost:10000/default> dataTypChk varchar(100),
+0: jdbc:hive2://localhost:10000/default> formatChk varchar(100),
+0: jdbc:hive2://localhost:10000/default> refChk varchar(100),
+0: jdbc:hive2://localhost:10000/default> customChk string,
+0: jdbc:hive2://localhost:10000/default> dq_run_time varchar(100))
+0: jdbc:hive2://localhost:10000/default> PARTITIONED BY (
+0: jdbc:hive2://localhost:10000/default> dq_batch_id bigint,
+0: jdbc:hive2://localhost:10000/default> src_tbl varchar(100))
+0: jdbc:hive2://localhost:10000/default> stored as parquetfile ;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+Table creation is Completed for  /home/cloudera/projects/dataquality_v1/hive/tables/dq_result_detl_tbl.hql
+/home/cloudera/projects/dataquality_v1/hive/tables/dq_result_summary_tbl.hql
+/home/cloudera/projects/dataquality_v1/config/home_config.txt
+beeline -u "jdbc:hive2://localhost:10000/default;" --silent -i /home/cloudera/projects/dataquality_v1/config/home_config.txt -f /home/cloudera/projects/dataquality_v1/hive/tables/dq_result_summary_tbl.hql
+0: jdbc:hive2://localhost:10000/default> #set dq_db_location='/user/spanda2020/data/app_dq' ;
+0: jdbc:hive2://localhost:10000/default> set dq_schema=app_dq;
+0: jdbc:hive2://localhost:10000/default> #set src_mdw_schema=l1_amlmkt_mdwe;
+0: jdbc:hive2://localhost:10000/default> #set hdfs_path=/user/spanda2020/data
+0: jdbc:hive2://localhost:10000/default> set dq_db_path="/user/spanda2020/data/app_dq"
+0: jdbc:hive2://localhost:10000/default> set dq_chk_master_path=/user/spanda2020/data/app_dq/dq_chk_master/
+0: jdbc:hive2://localhost:10000/default> set dq_app_config_path=/user/spanda2020/data/app_dq/dq_app_config/
+0: jdbc:hive2://localhost:10000/default> set dq_grp_config_path=/user/spanda2020/data/app_dq/dq_group_config
+0: jdbc:hive2://localhost:10000/default> set hiveserver2="jdbc:hive2://localhost:10000/default;"
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> use ${hiveconf:dq_schema};
+0: jdbc:hive2://localhost:10000/default> create table dq_result_summary
+0: jdbc:hive2://localhost:10000/default> (
+0: jdbc:hive2://localhost:10000/default> dq_check_id int,
+0: jdbc:hive2://localhost:10000/default> src_tbl varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_run_dt varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_check_nm varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_group_id int,
+0: jdbc:hive2://localhost:10000/default> dq_app_id  varchar(100),
+0: jdbc:hive2://localhost:10000/default> src_schema  varchar(100),
+0: jdbc:hive2://localhost:10000/default> src_col  varchar(100),
+0: jdbc:hive2://localhost:10000/default> rowkeynm varchar(100),
+0: jdbc:hive2://localhost:10000/default> rowkeyval varchar(100),
+0: jdbc:hive2://localhost:10000/default> dq_threshold_per float,
+0: jdbc:hive2://localhost:10000/default> tot_rec_cnt varchar(1),
+0: jdbc:hive2://localhost:10000/default> null_chk_cnt varchar(1),
+0: jdbc:hive2://localhost:10000/default> dup_chk_cnt varchar(100),
+0: jdbc:hive2://localhost:10000/default> len_chk_cnt varchar(100),
+0: jdbc:hive2://localhost:10000/default> lov_chk_cnt varchar(100),
+0: jdbc:hive2://localhost:10000/default> data_type_chk_cnt varchar(100),
+0: jdbc:hive2://localhost:10000/default> format_chk_cnt varchar(100),
+0: jdbc:hive2://localhost:10000/default> ref_chk_cnt varchar(100),
+0: jdbc:hive2://localhost:10000/default> custom_chk_cnt string,
+0: jdbc:hive2://localhost:10000/default> dq_run_time varchar(100))
+0: jdbc:hive2://localhost:10000/default> PARTITIONED BY (
+0: jdbc:hive2://localhost:10000/default> dq_batch_id bigint)
+0: jdbc:hive2://localhost:10000/default> stored as parquetfile ;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+Table creation is Completed for  /home/cloudera/projects/dataquality_v1/hive/tables/dq_result_summary_tbl.hql
+ **********   Script completed sucessfully *********

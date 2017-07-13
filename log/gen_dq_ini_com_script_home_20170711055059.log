@@ -1,0 +1,8 @@
+\n START gen_dq_ini_com_script.sh:  Tue Jul 11 05:50:59 PDT 2017.\n
+cfgfile : /home/cloudera/projects/dataquality_v1/config/home_config.txt
+dq_database_nm : app_dq
+hdfs_path : /user/spanda2020/data
+dq_database_path : "/user/spanda2020/data/app_dq"
+dq_schema : app_dq
+home
+ ************************  Data Quality check execution  job gen_dq_ini_com_script.sh is completed in  home for  app_cust COM *********************************

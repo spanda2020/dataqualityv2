@@ -1,0 +1,10 @@
+\n START gen_dq_create_db_script.sh:  Mon Jul 10 20:08:43 PDT 2017.\n
+cfgfile : /home/cloudera/projects/dataquality_v1/config/home_config.txt
+dq_database_nm : app_dq
+hdfs_path : /user/spanda2020/data
+dq_database_path : "/user/spanda2020/data/app_dq"
+hiveserver : "jdbc:hive2://localhost:10000/default;"
+home
+hiveserver : "jdbc:hive2://localhost:10000/default;"
+beeline -u "jdbc:hive2://localhost:10000/default;" --silent -e create database app_dq location "/user/spanda2020/data/app_dq";
+ ************************   Data Quality check execution  job gen_dq_create_db_script.sh is completed in  home for   . *********************************
